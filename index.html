@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="https://turquoise-jealous-unicorn-912.mypinata.cloud/ipfs/bafkreib6g4nuyk3z3l7didqbzoy5ype3p6cecmdptbbwljhnycrvnas6fe" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food 101 – Fresh, fast, Delicious!</title>
+    <meta name="description" content="Food 101 – Premium restaurant ordering. Taste Excellence with Food 101 delivered fresh to your doorstep." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind (CDN build for standalone preview) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-red': '#E30613',
+              'brand-yellow': '#FFD700',
+              'brand-white': '#FFFFFF',
+            },
+            fontFamily: {
+              'display': ['"Playfair Display"', 'serif'],
+              'body': ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              'premium': '0 20px 60px rgba(0,0,0,0.15)',
+              'glass': '0 8px 32px rgba(0,0,0,0.08)',
+              'card': '0 4px 24px rgba(0,0,0,0.06)',
+            },
+            animation: {
+              'float': 'float 3s ease-in-out infinite',
+              'float-delayed': 'float 3.5s ease-in-out infinite 0.5s',
+              'pulse-gentle': 'pulseGentle 3s ease-in-out infinite',
+              'slide-up': 'slideUp 0.6s ease-out forwards',
+              'fade-in': 'fadeIn 0.8s ease-out forwards',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              pulseGentle: {
+                '0%, 100%': { opacity: 1 },
+                '50%': { opacity: 0.7 },
+              },
+              slideUp: {
+                '0%': { opacity: 0, transform: 'translateY(30px)' },
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: 0 },
+                '100%': { opacity: 1 },
+              },
+            },
+          },
+        },
+      }
+    </script>
+
+    <style type="text/tailwindcss">
+      @layer base {
+        html { scroll-behavior: smooth; }
+        body { @apply font-body bg-white text-gray-800 antialiased; }
+        h1, h2, h3, h4, h5, h6 { @apply font-display; }
+        ::selection { @apply bg-brand-red text-white; }
+      }
+      @layer components {
+        .container-premium { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+        .glass-card { @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-glass; }
+        .glass-card-dark { @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-glass; }
+        .btn-primary { @apply inline-flex items-center justify-center px-6 py-3 bg-brand-red text-white font-semibold rounded-full transition-all duration-300 hover:bg-red-700 hover:shadow-lg hover:scale-105 active:scale-95; }
+        .btn-secondary { @apply inline-flex items-center justify-center px-6 py-3 bg-brand-yellow text-gray-900 font-semibold rounded-full transition-all duration-300 hover:bg-yellow-400 hover:shadow-lg hover:scale-105 active:scale-95; }
+        .btn-outline { @apply inline-flex items-center justify-center px-6 py-3 border-2 border-white text-white font-semibold rounded-full transition-all duration-300 hover:bg-white hover:text-brand-red hover:scale-105 active:scale-95; }
+        .section-title { @apply text-3xl md:text-4xl lg:text-5xl font-display font-bold text-gray-900; }
+        .section-subtitle { @apply text-lg md:text-xl text-gray-600 mt-2; }
+        .section-tag { @apply inline-block text-brand-red font-semibold text-sm uppercase tracking-wider mb-2; }
+        .menu-card { @apply bg-white rounded-2xl overflow-hidden shadow-card transition-all duration-500 hover:shadow-premium hover:-translate-y-2 border border-gray-50; }
+        .input-premium { @apply w-full px-4 py-3 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-red/50 focus:border-brand-red transition-all duration-300 text-gray-800 placeholder-gray-400; }
+        .select-premium { @apply w-full px-4 py-3 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-red/50 focus:border-brand-red transition-all duration-300 text-gray-800 appearance-none; }
+        .textarea-premium { @apply w-full px-4 py-3 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-red/50 focus:border-brand-red transition-all duration-300 text-gray-800 placeholder-gray-400 resize-none; }
+      }
+      @layer utilities {
+        .text-shadow { text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+        .text-shadow-light { text-shadow: 0 2px 12px rgba(0,0,0,0.15); }
+        .gradient-text { @apply bg-gradient-to-r from-brand-red to-red-600 bg-clip-text text-transparent; }
+        .bg-gradient-premium { @apply bg-gradient-to-br from-brand-red/5 via-white to-brand-yellow/5; }
+        .bg-gradient-hero { @apply bg-gradient-to-r from-black/70 via-black/40 to-transparent; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      }
+    </style>
+
+    <!-- React + Babel (standalone preview) -->
+    <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/jsx-source" id="app-source">
+      const { useState, useEffect } = React;
+
+      const LOGO_URL = 'https://turquoise-jealous-unicorn-912.mypinata.cloud/ipfs/bafkreib6g4nuyk3z3l7didqbzoy5ype3p6cecmdptbbwljhnycrvnas6fe';
+      const HERO_URL = 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&h=900&fit=crop&auto=format';
+
+      const menuData = [
+        { id: 1, name: 'Jollof Rice with Chicken', category: 'Signature Rice Meals', price: 3000, description: 'Premium Nigerian party-style jollof rice served with grilled chicken.', image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400&h=300&fit=crop&auto=format' },
+        { id: 2, name: 'Jollof Rice with Fish', category: 'Signature Rice Meals', price: 3000, description: 'Rich jollof rice paired with perfectly fried fish.', image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400&h=300&fit=crop&auto=format' },
+        { id: 3, name: 'Jollof Rice with Beef', category: 'Signature Rice Meals', price: 2200, description: 'Classic jollof rice with tender beef chunks.', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&h=300&fit=crop&auto=format' },
+        { id: 4, name: 'Plain Jollof Rice', category: 'Signature Rice Meals', price: 1900, description: 'Flavorful jollof rice on its own — simple and satisfying.', image: 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&h=300&fit=crop&auto=format' },
+        { id: 5, name: 'Small Plate with Chicken', category: 'Small Plate', price: 2600, description: 'A smaller portion of jollof rice with grilled chicken.', image: 'https://images.unsplash.com/photo-1598515213692-5f252f75d785?w=400&h=300&fit=crop&auto=format' },
+        { id: 6, name: 'Small Plate with Fish', category: 'Small Plate', price: 2600, description: 'A smaller portion of jollof rice with fried fish.', image: 'https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?w=400&h=300&fit=crop&auto=format' },
+        { id: 7, name: 'Small Plate with Beef', category: 'Small Plate', price: 1800, description: 'A smaller portion of jollof rice with beef.', image: 'https://images.unsplash.com/photo-1607330289024-1535c6b4e1c1?w=400&h=300&fit=crop&auto=format' },
+        { id: 8, name: 'Plain Small Plate', category: 'Small Plate', price: 1500, description: 'A smaller portion of plain jollof rice.', image: 'https://images.unsplash.com/photo-1516684732162-798a0062be99?w=400&h=300&fit=crop&auto=format' },
+        { id: 9, name: 'Chicken Shawarma', category: 'Signature Shawarmas', price: 2700, description: 'Freshly rolled chicken shawarma packed with flavor.', image: 'https://images.unsplash.com/photo-1633321088355-d0f81134ca3b?w=400&h=300&fit=crop&auto=format' },
+        { id: 10, name: 'Loaded Chicken Shawarma with Sausage', category: 'Signature Shawarmas', price: 3000, description: 'Chicken shawarma loaded with sausage for extra flavor.', image: 'https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=400&h=300&fit=crop&auto=format' },
+        { id: 11, name: 'Beef Shawarma', category: 'Signature Shawarmas', price: 2500, description: 'Freshly rolled beef shawarma with savory fillings.', image: 'https://images.unsplash.com/photo-1662116765994-1e4200c43589?w=400&h=300&fit=crop&auto=format' },
+        { id: 12, name: 'Loaded Beef Shawarma with Sausage', category: 'Signature Shawarmas', price: 2800, description: 'Beef shawarma loaded with sausage for a hearty meal.', image: 'https://images.unsplash.com/photo-1561651823-34feb02250e4?w=400&h=300&fit=crop&auto=format' },
+        { id: 13, name: 'Classic Chicken & Chips Pack', category: 'Chicken & Chips Packs', price: 3500, description: 'Crispy fried chicken served with golden fries.', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=400&h=300&fit=crop&auto=format' },
+        { id: 14, name: 'Jumbo Chicken & Chips Pack', category: 'Chicken & Chips Packs', price: 4500, description: 'Jumbo portion of crispy chicken and golden fries.', image: 'https://images.unsplash.com/photo-1626082927389-6cd097cee6a6?w=400&h=300&fit=crop&auto=format' },
+        { id: 15, name: 'Chicken Burger', category: 'Signature Burgers', price: 3500, description: 'Juicy chicken burger with fresh ingredients and special sauce.', image: 'https://images.unsplash.com/photo-1615297928064-24977384d0da?w=400&h=300&fit=crop&auto=format' },
+        { id: 16, name: 'Beef Burger', category: 'Signature Burgers', price: 3500, description: 'Gourmet beef burger with premium toppings and sauce.', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop&auto=format' },
+        { id: 17, name: 'Double Stack Burger', category: 'Signature Burgers', price: 4500, description: 'Double the patties, double the flavor — ultimate burger experience.', image: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop&auto=format' },
+        { id: 18, name: 'Chicken Pie', category: 'Bakery & Bites', price: 600, description: 'Savory chicken pie baked to perfection.', image: 'https://images.unsplash.com/photo-1621743478914-cc8a86d7e7b5?w=400&h=300&fit=crop&auto=format' },
+        { id: 19, name: 'Meat Pie', category: 'Bakery & Bites', price: 600, description: 'Classic meat pie with seasoned minced meat filling.', image: 'https://images.unsplash.com/photo-1568051243858-533a607809a5?w=400&h=300&fit=crop&auto=format' },
+        { id: 20, name: 'Egg Roll', category: 'Bakery & Bites', price: 500, description: 'Golden fried egg roll — a perfect snack.', image: 'https://images.unsplash.com/photo-1625938145312-c88c227d2532?w=400&h=300&fit=crop&auto=format' },
+        { id: 21, name: 'Doughnut', category: 'Bakery & Bites', price: 400, description: 'Light and fluffy doughnut, sweet and satisfying.', image: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=400&h=300&fit=crop&auto=format' },
+        { id: 22, name: 'Chicken (Add-on)', category: 'Protein Add-ons', price: 1500, description: 'Grilled chicken add-on for your meal.', image: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&h=300&fit=crop&auto=format' },
+        { id: 23, name: 'Fish (Add-on)', category: 'Protein Add-ons', price: 1500, description: 'Fried fish add-on for your meal.', image: 'https://images.unsplash.com/photo-1535140728325-a4d3707eee61?w=400&h=300&fit=crop&auto=format' },
+        { id: 24, name: 'Beef (Add-on)', category: 'Protein Add-ons', price: 300, description: 'Beef add-on to complement your meal.', image: 'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=400&h=300&fit=crop&auto=format' },
+        { id: 25, name: 'Coleslaw', category: 'Fresh Sides', price: 400, description: 'Fresh and creamy coleslaw side dish.', image: 'https://images.unsplash.com/photo-1625944230945-1b7dd3b949ab?w=400&h=300&fit=crop&auto=format' },
+        { id: 26, name: 'Cone Ice Cream', category: 'Sweet Treats', price: 500, description: 'Classic cone ice cream — a sweet delight.', image: 'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400&h=300&fit=crop&auto=format' },
+        { id: 27, name: 'Ice Cream (250ml)', category: 'Sweet Treats', price: 1000, description: 'Creamy ice cream in a 250ml cup.', image: 'https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?w=400&h=300&fit=crop&auto=format' },
+        { id: 28, name: 'Ice Cream (500ml)', category: 'Sweet Treats', price: 1800, description: 'Generous 500ml cup of creamy ice cream.', image: 'https://images.unsplash.com/photo-1488900128323-21503983a07e?w=400&h=300&fit=crop&auto=format' },
+        { id: 29, name: 'Milk Shake', category: 'Sweet Treats', price: 1000, description: 'Thick and creamy milkshake in your favorite flavor.', image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&h=300&fit=crop&auto=format' },
+      ];
+
+      const Navbar = () => {
+        const [isScrolled, setIsScrolled] = useState(false);
+        const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+        useEffect(() => {
+          const handleScroll = () => setIsScrolled(window.scrollY > 20);
+          window.addEventListener('scroll', handleScroll);
+          return () => window.removeEventListener('scroll', handleScroll);
+        }, []);
+        const navLinks = [
+          { name: 'Menu', href: '#menu' },
+          { name: 'Testimonials', href: '#testimonials' },
+          { name: 'Gallery', href: '#gallery' },
+          { name: 'Order', href: '#order' },
+          { name: 'Contact', href: '#contact' },
+        ];
+        return (
+          <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-lg py-3' : 'bg-transparent py-5'}`}>
+            <div className="container-premium">
+              <div className="flex items-center justify-between">
+                <a href="#" className="flex items-center gap-2 group">
+                  <img src={LOGO_URL} alt="Food 101 Logo" className="h-10 w-auto object-contain" />
+                  <span className="hidden md:block text-xs font-medium text-gray-500 border-l border-gray-300 pl-3">Fresh fast Delicious!</span>
+                </a>
+                <div className="hidden md:flex items-center gap-8">
+                  {navLinks.map((link) => (
+                    <a key={link.name} href={link.href} className="text-sm font-medium text-gray-700 hover:text-brand-red transition-colors duration-300 relative group">
+                      {link.name}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-red transition-all duration-300 group-hover:w-full" />
+                    </a>
+                  ))}
+                  <a href="#order" className="btn-primary text-sm px-5 py-2.5">Order Now</a>
+                </div>
+                <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Toggle menu">
+                  <div className="w-6 h-5 flex flex-col justify-between">
+                    <span className={`block h-0.5 bg-gray-800 transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                    <span className={`block h-0.5 bg-gray-800 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+                    <span className={`block h-0.5 bg-gray-800 transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div className={`md:hidden fixed top-[72px] left-0 right-0 bg-white/95 backdrop-blur-xl shadow-xl transition-all duration-500 overflow-hidden ${isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+              <div className="container-premium py-6 space-y-4">
+                {navLinks.map((link) => (
+                  <a key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="block text-base font-medium text-gray-700 hover:text-brand-red transition-colors py-2 border-b border-gray-100">{link.name}</a>
+                ))}
+                <a href="#order" onClick={() => setIsMobileMenuOpen(false)} className="btn-primary w-full text-center mt-2">Order Now</a>
+              </div>
+            </div>
+          </nav>
+        );
+      };
+
+      const Hero = () => (
+        <section id="hero" className="relative min-h-[70vh] md:min-h-[65vh] flex items-center overflow-hidden pt-20 bg-gray-900" style={{ backgroundImage: `url('${HERO_URL}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-[15%] right-[10%] w-20 h-20 rounded-full bg-brand-yellow/10 blur-2xl animate-float" />
+            <div className="absolute bottom-[20%] left-[5%] w-32 h-32 rounded-full bg-brand-red/10 blur-3xl animate-float-delayed" />
+            <div className="absolute top-[40%] left-[60%] w-16 h-16 rounded-full bg-white/5 blur-xl animate-pulse-gentle" />
+          </div>
+          <div className="container-premium relative z-10">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-6 animate-fade-in">
+                <span className="w-2 h-2 bg-brand-yellow rounded-full animate-pulse" />
+                <span className="text-white/90 text-xs font-medium tracking-wider uppercase">Premium Dining</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight animate-slide-up">
+                Taste Excellence with<span className="block text-brand-yellow">Food 101</span>
+              </h1>
+              <p className="mt-4 text-base sm:text-lg md:text-xl text-white/90 max-w-xl leading-relaxed animate-slide-up delay-100">"The Perfect Blend of Taste Delivered Fresh to Your Doorstep."</p>
+              <div className="mt-8 flex flex-wrap gap-4 animate-slide-up delay-200">
+                <a href="#order" className="btn-primary text-sm sm:text-base px-8 py-3.5">Order Now</a>
+                <a href="#menu" className="btn-outline text-sm sm:text-base px-8 py-3.5">View Menu</a>
+              </div>
+              <div className="mt-10 flex items-center gap-6 text-white/70 text-xs sm:text-sm animate-fade-in delay-300">
+                <div className="flex items-center gap-2"><span className="text-brand-yellow">★</span><span>4.8/5 Rating</span></div>
+                <div className="w-px h-4 bg-white/20" />
+                <div>Fresh Ingredients</div>
+                <div className="w-px h-4 bg-white/20" />
+                <div>Fast Delivery</div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 animate-bounce hidden sm:block">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+          </div>
+        </section>
+      );
+
+      const Menu = () => {
+        const [activeCategory, setActiveCategory] = useState('All');
+        const categories = ['All', ...new Set(menuData.map(item => item.category))];
+        const filteredItems = activeCategory === 'All' ? menuData : menuData.filter(item => item.category === activeCategory);
+        const formatPrice = (price) => `₦${price.toLocaleString()}`;
+        return (
+          <section id="menu" className="py-16 md:py-24 bg-gray-50/50">
+            <div className="container-premium">
+              <div className="text-center max-w-3xl mx-auto mb-12">
+                <span className="section-tag">Our Menu</span>
+                <h2 className="section-title">Discover Our <span className="gradient-text">Signature</span> Dishes</h2>
+                <p className="section-subtitle">Crafted with passion, served with love — every bite tells a story of excellence.</p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10">
+                {categories.map((category) => (
+                  <button key={category} onClick={() => setActiveCategory(category)} className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === category ? 'bg-brand-red text-white shadow-lg shadow-brand-red/30 scale-105' : 'bg-white text-gray-600 hover:bg-gray-100 hover:scale-105 shadow-sm'}`}>{category}</button>
+                ))}
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6">
+                {filteredItems.map((item) => (
+                  <div key={item.id} className="menu-card group">
+                    <div className="relative h-52 overflow-hidden bg-gray-200">
+                      <img src={item.image} alt={item.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop&auto=format'; }} />
+                      <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-semibold px-3 py-1 rounded-full shadow-sm">{item.category}</span>
+                      <span className="absolute bottom-3 right-3 bg-brand-red text-white font-bold px-3 py-1.5 rounded-lg text-sm shadow-lg">{formatPrice(item.price)}</span>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-display font-bold text-lg text-gray-900 group-hover:text-brand-red transition-colors">{item.name}</h3>
+                      <p className="text-sm text-gray-500 mt-1 line-clamp-2">{item.description}</p>
+                      <div className="mt-4 flex items-center justify-between">
+                        <span className="text-sm text-gray-400">{item.category}</span>
+                        <a href="#order" className="text-brand-red font-semibold text-sm hover:text-red-700 transition-colors flex items-center gap-1 group-hover:gap-2">Order Now
+                          <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="text-center mt-12">
+                <p className="text-gray-500 text-sm mb-4">Craving something special?</p>
+                <a href="#order" className="btn-primary">Place Your Order Now</a>
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const testimonials = [
+        { id: 1, name: 'Adebayo O.', location: 'Ilorin', text: "Food 101 has the best jollof rice I've ever tasted! The delivery was fast and the food was still hot. Absolutely love the blend of spices.", rating: 5, image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&auto=format' },
+        { id: 2, name: 'Chioma E.', location: 'Lagos', text: 'Their shawarma is incredibly loaded and flavorful. My go-to spot for quick, delicious meals. The customer service is top-notch!', rating: 5, image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&auto=format' },
+        { id: 3, name: 'Tunde A.', location: 'Abuja', text: 'The burgers are gourmet quality! Fresh ingredients, perfectly cooked patties, and the sauce is just divine. Highly recommend Food 101.', rating: 4, image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&auto=format' },
+        { id: 4, name: 'Zainab M.', location: 'Kwara', text: "I ordered the party rice for my event and everyone raved about it. Food 101 delivered excellence and made my event memorable.", rating: 5, image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&auto=format' },
+        { id: 5, name: 'Kelvin C.', location: 'Port Harcourt', text: 'Best chicken and chips in town! Crispy, well-seasoned, and generous portions. Food 101 never disappoints.', rating: 5, image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&auto=format' },
+      ];
+
+      const Testimonials = () => {
+        const [activeIndex, setActiveIndex] = useState(0);
+        const nextSlide = () => setActiveIndex((prev) => (prev + 1) % testimonials.length);
+        const prevSlide = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+        useEffect(() => {
+          const interval = setInterval(() => setActiveIndex((prev) => (prev + 1) % testimonials.length), 5000);
+          return () => clearInterval(interval);
+        }, []);
+        const current = testimonials[activeIndex];
+        const renderStars = (rating) => Array.from({ length: 5 }, (_, i) => (
+          <span key={i} className={`text-lg ${i < rating ? 'text-brand-yellow' : 'text-gray-300'}`}>★</span>
+        ));
+        return (
+          <section id="testimonials" className="py-16 md:py-24 bg-white">
+            <div className="container-premium">
+              <div className="text-center max-w-3xl mx-auto mb-12">
+                <span className="section-tag">Testimonials</span>
+                <h2 className="section-title">What Our <span className="gradient-text">Customers</span> Say</h2>
+                <p className="section-subtitle">Real reviews from real people who love the Food 101 experience.</p>
+              </div>
+              <div className="max-w-4xl mx-auto relative">
+                <div className="bg-gradient-premium rounded-3xl p-8 md:p-12 shadow-premium border border-white/50">
+                  <div className="flex flex-col md:flex-row items-center gap-8">
+                    <div className="flex-shrink-0">
+                      <div className="relative">
+                        <img src={current.image} alt={current.name} className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-4 border-white shadow-lg" onError={(e) => { e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(current.name)}&background=E30613&color=fff&size=100`; }} />
+                        <div className="absolute -bottom-1 -right-1 bg-brand-yellow rounded-full p-1">
+                          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M9 11.7l3.3 3.3 8-8L22 8l-9.7 9.7L7 14l2-2.3z" /></svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex-1 text-center md:text-left">
+                      <div className="flex justify-center md:justify-start gap-0.5 mb-3">{renderStars(current.rating)}</div>
+                      <blockquote className="text-lg md:text-xl text-gray-700 italic leading-relaxed">"{current.text}"</blockquote>
+                      <div className="mt-4">
+                        <p className="font-semibold text-gray-900">{current.name}</p>
+                        <p className="text-sm text-gray-500">{current.location}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex justify-center gap-3 mt-8">
+                    <button onClick={prevSlide} className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-brand-red hover:text-white hover:border-brand-red transition-all duration-300 shadow-sm" aria-label="Previous testimonial">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button onClick={nextSlide} className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-brand-red hover:text-white hover:border-brand-red transition-all duration-300 shadow-sm" aria-label="Next testimonial">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                  </div>
+                </div>
+                <div className="flex justify-center gap-2 mt-6">
+                  {testimonials.map((_, index) => (
+                    <button key={index} onClick={() => setActiveIndex(index)} className={`h-2 rounded-full transition-all duration-300 ${index === activeIndex ? 'w-8 bg-brand-red' : 'w-2 bg-gray-300 hover:bg-gray-400'}`} aria-label={`Go to testimonial ${index + 1}`} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const galleryImages = [
+        { id: 1, src: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&h=400&fit=crop&auto=format', alt: 'Jollof Rice with Chicken' },
+        { id: 2, src: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop&auto=format', alt: 'Gourmet Beef Burger' },
+        { id: 3, src: 'https://images.unsplash.com/photo-1633321088355-d0f81134ca3b?w=600&h=400&fit=crop&auto=format', alt: 'Chicken Shawarma' },
+        { id: 4, src: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=600&h=400&fit=crop&auto=format', alt: 'Chicken and Chips' },
+        { id: 5, src: 'https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?w=600&h=400&fit=crop&auto=format', alt: 'Creamy Ice Cream' },
+        { id: 6, src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop&auto=format', alt: 'Delicious Meal Spread' },
+      ];
+
+      const Gallery = () => {
+        const [selectedImage, setSelectedImage] = useState(null);
+        return (
+          <section id="gallery" className="py-16 md:py-24 bg-gray-50/50">
+            <div className="container-premium">
+              <div className="text-center max-w-3xl mx-auto mb-12">
+                <span className="section-tag">Gallery</span>
+                <h2 className="section-title">A Visual <span className="gradient-text">Feast</span></h2>
+                <p className="section-subtitle">Explore the mouthwatering dishes that make Food 101 the perfect blend of taste.</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                {galleryImages.map((image) => (
+                  <div key={image.id} className="relative group overflow-hidden rounded-2xl shadow-card hover:shadow-premium transition-all duration-500 cursor-pointer" onClick={() => setSelectedImage(image)}>
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <img src={image.src} alt={image.alt} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=400&fit=crop&auto=format'; }} />
+                    </div>
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="text-white font-medium text-sm bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">View</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {selectedImage && (
+                <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 animate-fade-in" onClick={() => setSelectedImage(null)}>
+                  <div className="relative max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
+                    <button onClick={() => setSelectedImage(null)} className="absolute -top-12 right-0 text-white/70 hover:text-white transition-colors text-xl">✕ Close</button>
+                    <img src={selectedImage.src} alt={selectedImage.alt} className="w-full h-auto max-h-[80vh] object-contain rounded-2xl shadow-2xl" />
+                    <p className="text-white/80 text-center mt-4 text-sm">{selectedImage.alt}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        );
+      };
+
+      const Order = () => {
+        const [formData, setFormData] = useState({ fullName: '', phoneNumber: '', deliveryAddress: '', branch: 'Kwara Poly Branch', foodItems: '', quantity: '', additionalNotes: '' });
+        const [isSubmitting, setIsSubmitting] = useState(false);
+        const branches = ['Kwara Poly Branch', 'Unilorin Branch', 'Other (please specify)'];
+        const handleChange = (e) => { const { name, value } = e.target; setFormData((prev) => ({ ...prev, [name]: value })); };
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          setIsSubmitting(true);
+          const message = `Hello Food 101,\n\nI would like to place an order.\n\n*Customer Name:* ${formData.fullName}\n*Branch:* ${formData.branch}\n*Food Items:* ${formData.foodItems}\n*Quantity:* ${formData.quantity}\n*Delivery Address:* ${formData.deliveryAddress}\n*Phone Number:* ${formData.phoneNumber}\n*Additional Notes:* ${formData.additionalNotes || 'None'}\n\nThank you.`;
+          const whatsappUrl = `https://wa.me/2348145066282?text=${encodeURIComponent(message)}`;
+          window.open(whatsappUrl, '_blank');
+          setIsSubmitting(false);
+          setFormData({ fullName: '', phoneNumber: '', deliveryAddress: '', branch: 'Kwara Poly Branch', foodItems: '', quantity: '', additionalNotes: '' });
+        };
+        return (
+          <section id="order" className="py-16 md:py-24 bg-white">
+            <div className="container-premium">
+              <div className="max-w-5xl mx-auto">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                  <span className="section-tag">Place Your Order</span>
+                  <h2 className="section-title">Ready to <span className="gradient-text">Order</span>?</h2>
+                  <p className="section-subtitle">Fill in your details below and we'll have your meal ready. Your order will be sent directly to us via WhatsApp.</p>
+                </div>
+                <div className="bg-gradient-premium rounded-3xl p-6 md:p-10 shadow-premium border border-white/50">
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 mb-1.5">Full Name <span className="text-brand-red">*</span></label>
+                        <input type="text" id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} required placeholder="e.g. John Doe" className="input-premium" />
+                      </div>
+                      <div>
+                        <label htmlFor="phoneNumber" className="block text-sm font-semibold text-gray-700 mb-1.5">Phone Number <span className="text-brand-red">*</span></label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required placeholder="e.g. 08012345678" className="input-premium" />
+                      </div>
+                    </div>
+                    <div>
+                      <label htmlFor="deliveryAddress" className="block text-sm font-semibold text-gray-700 mb-1.5">Delivery Address <span className="text-brand-red">*</span></label>
+                      <input type="text" id="deliveryAddress" name="deliveryAddress" value={formData.deliveryAddress} onChange={handleChange} required placeholder="e.g. 12, Awolowo Road, Ilorin" className="input-premium" />
+                    </div>
+                    <div>
+                      <label htmlFor="branch" className="block text-sm font-semibold text-gray-700 mb-1.5">Select Branch <span className="text-brand-red">*</span></label>
+                      <select id="branch" name="branch" value={branches.includes(formData.branch) ? formData.branch : 'Other (please specify)'} onChange={handleChange} required className="select-premium">
+                        {branches.map((branch) => (<option key={branch} value={branch}>{branch}</option>))}
+                      </select>
+                      {!['Kwara Poly Branch', 'Unilorin Branch'].includes(formData.branch) && (
+                        <input type="text" name="branch" value={formData.branch === 'Other (please specify)' ? '' : formData.branch} placeholder="Please specify your branch" className="input-premium mt-3" onChange={handleChange} />
+                      )}
+                    </div>
+                    <div>
+                      <label htmlFor="foodItems" className="block text-sm font-semibold text-gray-700 mb-1.5">What would you like to order? <span className="text-brand-red">*</span></label>
+                      <textarea id="foodItems" name="foodItems" value={formData.foodItems} onChange={handleChange} required rows={3} placeholder="e.g. 1x Chicken Shawarma, 2x Jollof Rice with Chicken, 1x Beef Burger" className="textarea-premium" />
+                      <p className="text-xs text-gray-400 mt-1.5">Please describe your order in detail. You can order multiple items at once.</p>
+                    </div>
+                    <div>
+                      <label htmlFor="quantity" className="block text-sm font-semibold text-gray-700 mb-1.5">Quantity (Total items) <span className="text-brand-red">*</span></label>
+                      <input type="text" id="quantity" name="quantity" value={formData.quantity} onChange={handleChange} required placeholder="e.g. 3 items, 2 plates, etc." className="input-premium" />
+                    </div>
+                    <div>
+                      <label htmlFor="additionalNotes" className="block text-sm font-semibold text-gray-700 mb-1.5">Additional Notes</label>
+                      <textarea id="additionalNotes" name="additionalNotes" value={formData.additionalNotes} onChange={handleChange} rows={2} placeholder="e.g. Extra pepper, No onions, Add drink, Deliver urgently" className="textarea-premium" />
+                    </div>
+                    <button type="submit" disabled={isSubmitting} className="w-full btn-primary py-4 text-base disabled:opacity-70 disabled:cursor-not-allowed">
+                      {isSubmitting ? (
+                        <span className="flex items-center justify-center gap-2">
+                          <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                          </svg>Sending...
+                        </span>
+                      ) : ('Place Order via WhatsApp')}
+                    </button>
+                    <p className="text-center text-xs text-gray-400 mt-2">By clicking "Place Order", you'll be redirected to WhatsApp to confirm your order.</p>
+                  </form>
+                </div>
+                <div className="mt-8 flex flex-wrap justify-center gap-6 text-center text-sm text-gray-500">
+                  <div className="flex items-center gap-2"><span className="text-brand-yellow text-lg">✓</span>Fresh Ingredients</div>
+                  <div className="flex items-center gap-2"><span className="text-brand-yellow text-lg">✓</span>Fast Delivery</div>
+                  <div className="flex items-center gap-2"><span className="text-brand-yellow text-lg">✓</span>Hygienic Prep</div>
+                  <div className="flex items-center gap-2"><span className="text-brand-yellow text-lg">✓</span>Excellent Service</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const Contact = () => {
+        const socialLinks = [
+          { name: 'Twitter', handle: '@food101ng', url: 'https://twitter.com/food101ng', icon: (<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>) },
+          { name: 'Instagram', handle: '@food101ng', url: 'https://instagram.com/food101ng', icon: (<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>) },
+          { name: 'TikTok', handle: '@food101ng', url: 'https://tiktok.com/@food101ng', icon: (<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" /></svg>) },
+        ];
+        return (
+          <section id="contact" className="py-16 md:py-24 bg-gray-50/50">
+            <div className="container-premium">
+              <div className="max-w-5xl mx-auto">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                  <span className="section-tag">Contact Us</span>
+                  <h2 className="section-title">Get In <span className="gradient-text">Touch</span></h2>
+                  <p className="section-subtitle">Have questions? Want to place a bulk order? Reach out to us — we're here to help.</p>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-6">
+                    <div className="glass-card rounded-2xl p-6 border border-white/50">
+                      <h3 className="font-display font-bold text-xl text-gray-900 mb-4">Contact Information</h3>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center flex-shrink-0">
+                            <svg className="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                          </div>
+                          <div><p className="text-xs text-gray-400 font-medium">Phone</p><a href="tel:+2348145066282" className="text-gray-800 hover:text-brand-red transition-colors">+234 814 506 6282</a></div>
+                        </div>
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                            <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+                          </div>
+                          <div><p className="text-xs text-gray-400 font-medium">WhatsApp</p><a href="https://wa.me/2348145066282" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-green-500 transition-colors">+234 814 506 6282</a></div>
+                        </div>
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-full bg-brand-yellow/10 flex items-center justify-center flex-shrink-0">
+                            <svg className="w-5 h-5 text-brand-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                          </div>
+                          <div><p className="text-xs text-gray-400 font-medium">Email</p><a href="mailto:healthyfood101@gmail.com" className="text-gray-800 hover:text-brand-red transition-colors">healthyfood101@gmail.com</a></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="glass-card rounded-2xl p-6 border border-white/50">
+                      <h3 className="font-display font-bold text-xl text-gray-900 mb-4">Follow Us</h3>
+                      <div className="space-y-3">
+                        {socialLinks.map((social) => (
+                          <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
+                            <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-brand-red/10 transition-colors">
+                              <span className="text-gray-600 group-hover:text-brand-red transition-colors">{social.icon}</span>
+                            </div>
+                            <div><p className="font-medium text-gray-800">{social.name}</p><p className="text-sm text-gray-400">{social.handle}</p></div>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-red/10 via-white to-brand-yellow/10 p-8 border border-white/50">
+                    <div className="absolute -top-20 -right-20 w-64 h-64 bg-brand-red/5 rounded-full blur-3xl" />
+                    <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-brand-yellow/5 rounded-full blur-3xl" />
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-3 mb-4">
+                        <img src={LOGO_URL} alt="Food 101" className="h-10 w-auto object-contain" />
+                        <span className="font-display font-bold text-xl"><span className="text-brand-red">FOOD</span><span className="text-gray-800">101</span></span>
+                      </div>
+                      <h3 className="font-display font-bold text-2xl text-gray-900">Craving something <span className="gradient-text">delicious</span>?</h3>
+                      <p className="text-gray-600 mt-2 text-sm leading-relaxed">Order now and experience the perfect blend of taste delivered fresh to your doorstep.</p>
+                      <div className="mt-6 space-y-3">
+                        <a href="#order" className="w-full btn-primary text-center block">Order Now</a>
+                        <a href="tel:+2348145066282" className="w-full btn-secondary text-center block">Call Us</a>
+                      </div>
+                      <div className="mt-6 pt-6 border-t border-gray-200">
+                        <p className="text-xs text-gray-400"><span className="font-semibold">Delivery:</span> Available within Ilorin and surrounding areas.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      };
+
+      const Footer = () => {
+        const currentYear = new Date().getFullYear();
+        const quickLinks = [
+          { name: 'Home', href: '#' },
+          { name: 'Menu', href: '#menu' },
+          { name: 'Order', href: '#order' },
+          { name: 'Contact', href: '#contact' },
+        ];
+        const socialLinks = [
+          { name: 'Twitter', url: 'https://twitter.com/food101ng', icon: '🐦' },
+          { name: 'Instagram', url: 'https://instagram.com/food101ng', icon: '📸' },
+          { name: 'TikTok', url: 'https://tiktok.com/@food101ng', icon: '🎵' },
+        ];
+        return (
+          <footer className="bg-gray-900 text-white/80">
+            <div className="container-premium py-12 md:py-16">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div className="md:col-span-1">
+                  <div className="flex items-center gap-2 mb-4">
+                    <img src={LOGO_URL} alt="Food 101 Logo" className="h-12 w-auto object-contain" />
+                  </div>
+                  <p className="text-sm text-white/60 leading-relaxed">"Fresh fast and Delicious!"</p>
+                  <p className="text-xs text-white/40 mt-3 leading-relaxed">Premium restaurant serving delicious meals crafted with passion and the finest ingredients.</p>
+                </div>
+                <div>
+                  <h4 className="font-display font-bold text-white text-lg mb-4">Quick Links</h4>
+                  <ul className="space-y-2.5">
+                    {quickLinks.map((link) => (<li key={link.name}><a href={link.href} className="text-sm text-white/60 hover:text-brand-yellow transition-colors duration-300 hover:translate-x-1 inline-block">{link.name}</a></li>))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-display font-bold text-white text-lg mb-4">Contact</h4>
+                  <ul className="space-y-2.5 text-sm text-white/60">
+                    <li><a href="tel:+2348145066282" className="hover:text-brand-yellow transition-colors">+234 814 506 6282</a></li>
+                    <li><a href="https://wa.me/2348145066282" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors">WhatsApp</a></li>
+                    <li><a href="mailto:healthyfood101@gmail.com" className="hover:text-brand-yellow transition-colors">healthyfood101@gmail.com</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-display font-bold text-white text-lg mb-4">Follow Us</h4>
+                  <div className="flex gap-3">
+                    {socialLinks.map((social) => (<a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-red transition-colors duration-300 hover:scale-110 transform" aria-label={social.name}><span className="text-lg">{social.icon}</span></a>))}
+                  </div>
+                  <div className="mt-4"><p className="text-xs text-white/40">Follow us for updates and special offers.</p></div>
+                </div>
+              </div>
+              <div className="border-t border-white/10 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p className="text-xs text-white/40">&copy; {currentYear} Food 101. All rights reserved.</p>
+                <p className="text-xs text-white/30">Made with ❤️ in Nigeria</p>
+              </div>
+            </div>
+          </footer>
+        );
+      };
+
+      const App = () => {
+        const [isLoaded, setIsLoaded] = useState(false);
+        useEffect(() => { setIsLoaded(true); }, []);
+        return (
+          <div className={`min-h-screen transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+            <Navbar />
+            <Hero />
+            <Menu />
+            <Testimonials />
+            <Gallery />
+            <Order />
+            <Contact />
+            <Footer />
+          </div>
+        );
+      };
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+
+    <!-- Bootstrap: compile the JSX above with the classic runtime, then run it. -->
+    <script>
+      (function () {
+        function boot() {
+          try {
+            var src = document.getElementById('app-source').textContent;
+            var out = Babel.transform(src, {
+              presets: [['react', { runtime: 'classic' }]],
+            }).code;
+            new Function('React', 'ReactDOM', out)(React, ReactDOM);
+          } catch (err) {
+            document.getElementById('root').innerHTML =
+              '<div style="max-width:600px;margin:80px auto;padding:24px;font-family:sans-serif;color:#b91c1c;text-align:center">' +
+              '<h2>Something went wrong loading the preview.</h2>' +
+              '<p>Please make sure you have an internet connection and try reopening the file.</p>' +
+              '<pre style="text-align:left;white-space:pre-wrap;color:#666;font-size:12px">' +
+              (err && err.message ? err.message : err) + '</pre></div>';
+            console.error(err);
+          }
+        }
+        // Wait until React, ReactDOM and Babel have all finished loading.
+        function ready() {
+          return window.React && window.ReactDOM && window.Babel;
+        }
+        (function wait() {
+          if (ready()) boot();
+          else setTimeout(wait, 40);
+        })();
+      })();
+    </script>
+  </body>
+</html>
